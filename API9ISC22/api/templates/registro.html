@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../static/CSS/clase.css">
+  <title>Formulario Registro</title>
+</head>
+<body>
+  <section class="form-register">
+    <h4>Formulario Registro</h4>
+    <form method="post">
+    {% csrf_token %} 
+<input class="controls" type="text" name="username" id="nombres" placeholder="Ingrese su Nombre">
+    <!-- <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese su Apellido"> -->
+    <input class="controls" type="email" name="email" id="correo" placeholder="Ingrese su Correo">
+    <input class="controls" type="password" name="password1" id="correo" placeholder="Ingrese su Contraseña">
+    <input class="controls" type="password" name="password2" id="correo" placeholder="Ingrese su Contraseña">
+    <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
+    <button type="submit">GUARDAR</button>
+    <p><a href="{% url 'index' %}">Ya tengo Cuenta</a></p>
+
+
+    </form>
+    
+  </section>
+
+</body>
+</html>

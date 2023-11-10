@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    
+    <div>
+        <h4>
+            {% for registro in registros %}
+                <tr>
+                <td>{{ registro.id }}</td>
+                <td>{{ registro.marca_temporal }}</td>
+                <td>{{ registro.nombre_completo }}</td>
+                <td>{{ registro.pregunta1 }}</td>
+                <td>{{ registro.pregunta2 }}</td>
+                <td>{{ registro.pregunta3 }}</td>
+                <td>{{ registro.pregunta4 }}</td>
+                <td>{{ registro.pregunta5 }}</td>
+                <td>{{ registro.pregunta6 }}</td>
+                <td>{{ registro.pregunta7 }}</td>
+                </tr>
+            {% endfor %}
+        </h4>
+    <h5>
+        {% for registro in registros %}
+            {% if registro.pregunta1 == "Si" %}
+                <tr>
+                    <td>{{ registro.pregunta1 }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        {{ count_si }} filas en total.
+    </h5>
+    
+    <h6>
+        {% for registro in registros %}
+            {% if registro.pregunta1 == "No" %}
+                <tr>
+                    <td>{{ registro.pregunta1 }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        {{ count_no }} - filas en total.
+    
+    </div>
+    
+        <div>
+            <canvas id="myChart"></canvas>
+          </div>
+          
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          
+          <script>
+            const ctx = document.getElementById('myChart');
+          
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: ['Si', 'No', 'Numero X',],
+                datasets: [{
+                  label: 'Encuesta pregunta 1 de Si',
+                  data: [{{count_si}}, {{count_no}}, 5],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+    
+
+</body>
+</html>
